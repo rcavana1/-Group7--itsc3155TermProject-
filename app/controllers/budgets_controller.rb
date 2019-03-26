@@ -1,4 +1,4 @@
-class BudgetController < ApplicationController
+class BudgetsController < ApplicationController
 
     def new
     end
