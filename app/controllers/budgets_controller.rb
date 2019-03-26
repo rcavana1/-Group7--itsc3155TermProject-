@@ -10,6 +10,10 @@ class BudgetsController < ApplicationController
         @budget.save
         redirect_to @budget
     end
+    
+    def show
+        @budget = Budget.find(params[:id])
+    end
 
 end
 

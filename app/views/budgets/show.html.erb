@@ -1,0 +1,14 @@
+<p>
+    Budget For:
+    <%= @budget.month.strftime('%B %Y') %>
+</p>
+
+<p>
+    Savings Target:
+    <%= number_to_currency(@budget.target) %>
+</p>
+
+<p>
+    Current Total:
+    <%= number_to_currency(@budget.total) %>
+</p>
