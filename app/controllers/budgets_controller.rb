@@ -4,7 +4,17 @@ class BudgetsController < ApplicationController
     end
     
     def create
-        render plain: params[:budget].inspect
+        @budget = Budget.new(budget_params)
+        @budget.total=0
+        
+        @budget.save
+        redirect_to @budget
     end
 
 end
+
+private
+    def budget_params
+        params.require(:budget).permit(:month, :target, :total)
+    end
+    
