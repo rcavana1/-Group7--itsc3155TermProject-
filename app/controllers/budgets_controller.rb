@@ -13,6 +13,10 @@ class BudgetsController < ApplicationController
     
     def show
         @budget = Budget.find(params[:id])
+        
+        # commented out pending relevant models and
+        # @incomes = Income.all
+        # @expenses = Expenses.all
     end
 
 end

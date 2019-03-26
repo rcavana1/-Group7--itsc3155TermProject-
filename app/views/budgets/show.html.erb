@@ -3,12 +3,53 @@
     <%= @budget.month.strftime('%B %Y') %>
 </p>
 
+<!--commented out pending relevant models and controllers-->
+<%
+=begin
+%>
+<h1>Income:</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+  </tr>
+ 
+  <% @incomes.each do |income| %>
+    <tr>
+      <td><%= income.name %></td>
+      <td><%= number_to_currency(income.amount) %></td>
+      <td><%= link_to 'Show', income_path(income) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h1>Expenses</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Spending Target</th>
+    <th>Spent</th>
+  </tr>
+ 
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.name %></td>
+      <td><%= number_to_currency(expense.target) %></td>
+      <td><%= number_to_currency(expense.amount) %></td>
+      <td><%= link_to 'Show', expense_path(expense) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%
+=end
+%>
+
 <p>
     Savings Target:
     <%= number_to_currency(@budget.target) %>
-</p>
-
-<p>
     Current Total:
     <%= number_to_currency(@budget.total) %>
 </p>
