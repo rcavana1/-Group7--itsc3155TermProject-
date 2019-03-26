@@ -1,0 +1,16 @@
+<h1>New Budget</h1>
+<%= form_for :budget, url: budgets_path do |f| %>
+  <p>
+    <%= f.label :month %><br>
+    <%= f.date_field :month %>
+  </p>
+ 
+  <p>
+    <%= f.label :target %><br>
+    <%= f.number_field :target %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
