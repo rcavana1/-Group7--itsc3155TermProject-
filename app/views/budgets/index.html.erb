@@ -1,0 +1,24 @@
+<h1>Budgets</h1>
+<%= link_to 'New budget', new_budget_path %>
+
+<table>
+  <tr>
+    <th>Budget for month</th>
+    <th>Savings target</th>
+    <th>Current total</th>
+  </tr>
+ 
+  <% @budgets.each do |budget| %>
+    <tr>
+      <td><%= budget.month.strftime('%B %Y') %></td>
+      <td><%= number_to_currency(budget.target) %></td>
+      <td><%= number_to_currency(budget.total) %></td>
+      <td><%= link_to 'Show', budget_path(budget) %></td>
+      <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
+      <td><%= link_to 'Destroy',
+                                budget_path(budget),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

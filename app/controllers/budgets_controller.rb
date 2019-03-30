@@ -19,6 +19,9 @@ class BudgetsController < ApplicationController
         # @expenses = Expenses.all
     end
 
+    def index
+        @budgets = Budget.all
+    end
 end
 
 private
