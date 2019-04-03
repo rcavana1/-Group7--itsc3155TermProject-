@@ -1,4 +1,4 @@
 class IncomesController < ApplicationController
-  def index
+  def new
   end
 end
