@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   resources :accounts
   resources :budgets
+  resources :expenses
   
   root 'welcome#index'
 end
