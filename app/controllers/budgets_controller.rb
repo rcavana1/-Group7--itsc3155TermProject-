@@ -1,4 +1,5 @@
 class BudgetsController < ApplicationController
+# you are on slide 5
 
     def new
         @budget = Budget.new
