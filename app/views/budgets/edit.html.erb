@@ -1,5 +1,5 @@
-<h1>New Budget</h1>
-<%= form_for :budget, url: budgets_path do |f| %>
+<h1>Edit Budget</h1>
+<%= form_for :budget, url: budget_path(@budget), method: :patch do |f| %>
  
   <% if @budget.errors.any? %>
     <div id="error_explanation">
@@ -15,10 +15,16 @@
     </div>
   <% end %>
  
+<%
+=begin
+%>
   <p>
     <%= f.label :month %><br>
     <%= f.date_field :month %>
   </p>
+<%
+=end
+%>
  
   <p>
     <%= f.label :target %><br>

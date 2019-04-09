@@ -27,6 +27,20 @@ class BudgetsController < ApplicationController
     def index
         @budgets = Budget.all
     end
+    
+    def edit
+        @budget = Budget.find(params[:id])
+    end
+
+    def update
+        @budget = Budget.find(params[:id])
+        if @budget.update(budget_params)
+            redirect_to @budget
+        else
+            render 'edit'
+        end
+    end
+    
 end
 
 private
