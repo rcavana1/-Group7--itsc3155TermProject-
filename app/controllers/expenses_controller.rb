@@ -46,7 +46,7 @@ class ExpensesController < ApplicationController
         @reocurring = Expense.find(params[:id])
     end
     
-     def show_stable
+    def show_stable
         @stable = Expense.find(params[:id])
     end
     
