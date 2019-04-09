@@ -4,8 +4,8 @@ class CreateExpenses < ActiveRecord::Migration[5.2]
       t.string :names
       t.float :target
       t.float :amount
-      t.bool  :reocurring
-      t.bool  :stable
+      t.boolean  :reocurring
+      t.boolean  :stable
       t.timestamps
     end
   end
