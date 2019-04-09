@@ -1,14 +1,18 @@
 class BudgetsController < ApplicationController
 
     def new
+        @budget = Budget.new
     end
     
     def create
         @budget = Budget.new(budget_params)
-        @budget.total=0
+        @budget.total=0.0
         
-        @budget.save
-        redirect_to @budget
+        if @budget.save
+            redirect_to @budget
+        else
+            render 'new'
+        end
     end
     
     def show
