@@ -29,11 +29,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_203341) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.string "names"
-    t.float "target"
-    t.float "amount"
-    t.bool "reocurring"
-    t.bool "stable"
+    t.string "title"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
