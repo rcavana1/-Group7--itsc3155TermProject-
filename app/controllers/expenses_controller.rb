@@ -9,30 +9,45 @@ class ExpensesController < ApplicationController
         
         if @expense.save
     
-            redirect_to @expense
+            redirect_to :action => 'list'
         else
-            render 'new'
+            render :action => 'new'
         end
     end
     
     def edit
         @expense =  Expense.find(params[:id])
     end
+    
     def update
         @expense = Expense.find(params[:id])
-        if @expense.update()
-        redirect_to @expense
+        
+        if @expense.update_attributes(expense_param)
+            redirect_to :action => 'show', :id => @expense
         else
-        render 'edit'
+        render :action => 'edit'
         end
     end
     
     def destroy
-    Expense.delete_all(condition: 'name')
+        Expense.find(params[:id]).destroy
+        redirect_to :action => 'list'
     end
     
     def show
         @expense = Expense.find(params[:id])
+    end
+    
+    def list
+        @expense = Expense.all
+    end
+    
+    def show_reocurring
+        @reocurring = Expense.find(params[:id])
+    end
+    
+     def show_stable
+        @stable = Expense.find(params[:id])
     end
     
     private
