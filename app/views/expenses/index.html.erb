@@ -1,0 +1,13 @@
+<% if @expense.blank? %>
+<p>You have not set any expenses yet.</p>
+<% else %>
+<p>Current Expenses</p>
+
+<ul id = "expenses">
+   <% @expenses.each do |c| %>
+   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+   <% end %>
+</ul>
+
+<% end %>
+<p><%= link_to "Add new Expense", {:action => 'new' }%></p>
