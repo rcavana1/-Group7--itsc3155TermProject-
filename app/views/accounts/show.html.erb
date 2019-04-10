@@ -6,3 +6,8 @@
 <p>
     Currently logged in as: <%= @account.username %>
 </p>
+
+<%= link_to 'Edit Account', edit_account_path(@account) %><br>
+<%= link_to 'Delete Account', account_path(@account),
+                method: :delete,
+                data: { confirm: 'Are you sure you want to delete your account?' } %>
