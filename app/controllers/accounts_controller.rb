@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
         @account = Account.find(params[:id])
         @account.destroy
         
-        redirect_to welcome_index
+        redirect_to welcome_index_url
     end
     
     def show

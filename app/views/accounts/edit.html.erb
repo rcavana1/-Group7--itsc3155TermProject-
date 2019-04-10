@@ -1,6 +1,6 @@
 <h1>Edit Account</h1>
 
-<%= form_for :account, url: accounts_path(@account), method: :patch do |f| %>
+<%= form_for :account, url: account_path(@account), method: :patch do |f| %>
     <% if @account.errors.any? %>
         <div id="error_explanation">
             <h2>
