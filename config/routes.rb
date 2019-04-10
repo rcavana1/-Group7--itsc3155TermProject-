@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   get 'expenses/show_stable'
   
   resources :accounts
+  # resources :accounts do
+  #   resources :budgets do
+  #     resources :incomes
+  #     resources :expenses
+  # end
   resources :budgets
   resources :expenses
   
