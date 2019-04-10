@@ -1,4 +1,8 @@
 class AccountsController < ApplicationController
+    def index
+        @accounts = Account.all
+    end
+    
     def login
     end
     
@@ -44,5 +48,5 @@ end
 
 private
     def account_params
-        params.require(:account).permit(:username, :password, :name)
+        params.require(:accounts).permit(:username, :password, :name)
     end
