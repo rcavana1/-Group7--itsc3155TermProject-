@@ -3,13 +3,17 @@ class AccountsController < ApplicationController
     end
     
     def new
+        @account = Account.new
     end
     
     def create
         @account = Account.new(account_params)
         
-        @account.save
-        redirect_to @account
+        if @account.save
+            redirect_to @account
+        else
+            render 'new'
+        end
     end
     
     def edit
