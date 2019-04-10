@@ -1,0 +1,13 @@
+<% if @income.blank? %>
+<p>No Income Input</p>
+<% else %>
+<p>Current Incomes</p>
+
+<ul id = "incomes">
+   <% @incomes.each do |c| %>
+   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+   <% end %>
+</ul>
+
+<% end %>
+<p><%= link_to "Add New Income", {:action => 'new' }%></p>

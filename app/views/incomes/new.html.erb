@@ -1,0 +1,32 @@
+<h1>Add New Income</h1>
+
+<%= form_tag :action => 'create' do %>
+<p>
+<label for = "income_name">Name</label>:
+<%= text_field 'income', 'names' %>
+</p>
+
+<p>
+<label for = "income_amount">Amount</label>:
+<%= text_field 'income', 'amount' %>
+</p>
+
+<p>
+<label for = "income_reocurring">Reocurring Expense?</label>:
+<%= check_box_tag 'income', 'yes'  %>
+</p>
+
+<p>
+<label for = "income_stable">Stable Expense?</label>:
+<%= check_box_tag 'income', 'yes'  %>
+</p>
+
+<p>
+  <label for = "date">Date</label>
+  <%= date_field_tag 'date'%>
+</p>
+
+<%= submit_tag "create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'welcome'} %>
