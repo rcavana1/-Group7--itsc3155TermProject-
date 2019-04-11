@@ -30,9 +30,10 @@ Rails.application.routes.draw do
   get 'incomes/show_reocurring'
   get 'incomes/show_stable'
   
-  resources :accounts
-  # resources :accounts do
-  #   resources :budgets do
+  # resources :accounts
+  resources :accounts do
+    resources :budgets
+  end
   #     resources :incomes
   #     resources :expenses
   # end

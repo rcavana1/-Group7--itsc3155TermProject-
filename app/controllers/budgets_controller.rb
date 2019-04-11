@@ -1,19 +1,23 @@
 class BudgetsController < ApplicationController
-# you are on slide 5
+# you are on slide 8
 
-    def new
-        @budget = Budget.new
-    end
+    # def new
+    #     @account = Account.find(params[:account_id])
+    #     @budget = @account.budgets.new
+    # end
     
     def create
-        @budget = Budget.new(budget_params)
+        @account = Account.find(params[:account_id])
+        @budget = @account.budgets.create(budget_params)
         @budget.total=0.0
+        @budget.save
         
-        if @budget.save
-            redirect_to @budget
-        else
-            render 'new'
-        end
+        redirect_to account_path(@account)
+        # if @budget.save
+        #     redirect_to @budget
+        # else
+        #     render 'new'
+        # end
     end
     
     def show
@@ -45,7 +49,7 @@ class BudgetsController < ApplicationController
         @budget = Budget.find(params[:id])
         @budget.destroy
         
-        redirect_to budgets_path
+        # redirect_to budgets_path
     end
     
 end

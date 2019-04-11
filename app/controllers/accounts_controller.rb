@@ -43,10 +43,11 @@ class AccountsController < ApplicationController
     
     def show
         @account = Account.find(params[:id])
+        @budgets = @account.budgets
     end
 end
 
 private
     def account_params
-        params.require(:accounts).permit(:username, :password, :name)
+        params.require(:account).permit(:username, :password, :name)
     end
