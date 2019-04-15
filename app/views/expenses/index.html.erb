@@ -6,6 +6,8 @@
     <th>Expense Name</th>
     <th>Target</th>
     <th>Amount</th>
+    <th>Reoccuring</th>
+    <th>Stable</th>
   </tr>
  
   <% @expenses.each do |expense| %>
@@ -13,6 +15,8 @@
       <td><%= expense.names %></td>
       <td><%= number_to_currency(expense.target) %></td>
       <td><%= number_to_currency(expense.amount) %></td>
+      <td><%= expense.reocurring %></td>
+      <td><%= expense.stable %></td>
       <td><%= link_to 'Show', expense_path(expense) %></td>
       <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
       <td><%= link_to 'Destroy',

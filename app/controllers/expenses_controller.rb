@@ -19,14 +19,14 @@ class ExpensesController < ApplicationController
         @expense =  Expense.find(params[:id])
     end
     
-     def index
+    def index
         @expenses = Expense.all
     end
     
     def update
         @expense = Expense.find(params[:id])
         
-        if @expense.update_attributes(expense_param)
+        if @expense.update(expense_params)
             redirect_to @expense
         else
             render 'edit'
@@ -37,20 +37,13 @@ class ExpensesController < ApplicationController
         @expense = Expense.find(params[:id])
         @expense.destroy
         
-        redirect_to expense_path
+        redirect_to expenses_path
     end
     
     def show
         @expense = Expense.find(params[:id])
     end
     
-    def show_reocurring
-        @reocurring = Expense.find(params[:id])
-    end
-    
-    def show_stable
-        @stable = Expense.find(params[:id])
-    end
     
   
 end

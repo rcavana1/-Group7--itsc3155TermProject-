@@ -16,9 +16,7 @@ Rails.application.routes.draw do
   post 'expenses/update'
   get 'expenses/destroy'
   get 'expenses/show'
-  get 'expenses/list'
-  get 'expenses/show_reocurring'
-  get 'expenses/show_stable'
+
   
   get 'incomes/new'
   post 'incomes/create'
@@ -26,7 +24,6 @@ Rails.application.routes.draw do
   post 'incomes/update'
   get 'incomes/destroy'
   get 'incomes/show'
-  get 'incomes/list'
   get 'incomes/show_reocurring'
   get 'incomes/show_stable'
   

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_164232) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.string "names"
+    t.string "name"
     t.float "target"
     t.float "amount"
     t.boolean "reocurring"
