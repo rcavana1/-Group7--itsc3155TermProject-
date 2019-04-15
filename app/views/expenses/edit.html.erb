@@ -1,5 +1,5 @@
-<h1>New Expense</h1>
-<%= form_for :expense, url: expenses_path do |f| %>
+<h1>Edit Expense</h1>
+<%= form_for :expense, url: budget_path(@expense), method: :patch do |f| %>
  
   <% if @expense.errors.any? %>
     <div id="error_explanation">
@@ -14,6 +14,8 @@
       </ul>
     </div>
   <% end %>
+ 
+
  
   <p>
     <%= f.label :name %><br>
@@ -37,9 +39,10 @@
     <%= f.label :stable %><br>
     <%= f.text_field :stable %>
   </p>
-  
+ 
   <p>
     <%= f.submit %>
   </p>
 <% end %>
 
+<%= link_to 'Expense', expense_path %>

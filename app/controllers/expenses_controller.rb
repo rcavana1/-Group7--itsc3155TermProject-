@@ -9,9 +9,9 @@ class ExpensesController < ApplicationController
         
         if @expense.save
     
-            redirect_to :action => 'list'
+            redirect_to @expense
         else
-            render :action => 'new'
+            render 'new'
         end
     end
     
@@ -19,27 +19,29 @@ class ExpensesController < ApplicationController
         @expense =  Expense.find(params[:id])
     end
     
+     def index
+        @expenses = Expense.all
+    end
+    
     def update
         @expense = Expense.find(params[:id])
         
         if @expense.update_attributes(expense_param)
-            redirect_to :action => 'show', :id => @expense
+            redirect_to @expense
         else
-        render :action => 'edit'
+            render 'edit'
         end
     end
     
     def destroy
-        Expense.find(params[:id]).destroy
-        redirect_to :action => 'list'
+        @expense = Expense.find(params[:id])
+        @expense.destroy
+        
+        redirect_to expense_path
     end
     
     def show
         @expense = Expense.find(params[:id])
-    end
-    
-    def list
-        @expense = Expense.all
     end
     
     def show_reocurring
@@ -50,8 +52,9 @@ class ExpensesController < ApplicationController
         @stable = Expense.find(params[:id])
     end
     
-    private
+  
+end
+  private
     def expense_params
         params.require(:expense).permit(:names, :target, :amount, :reocurring, :stable)
     end
-end

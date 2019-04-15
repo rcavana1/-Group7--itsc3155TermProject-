@@ -1,0 +1,16 @@
+<p>
+    Expenses For:
+    <%= @expense.names %>
+</p>
+
+<!--commented out pending relevant models and controllers-->
+
+
+<p>
+    Savings Target:
+    <%= number_to_currency(@expense.target) %>
+    Current Total:
+    <%= number_to_currency(@expense.amount) %>
+</p>
+
+<%= link_to 'All Expenses', expense_path %>

@@ -1,13 +1,24 @@
-<% if @expense.blank? %>
-<p>You have not set any expenses yet.</p>
-<% else %>
-<p>Current Expenses</p>
+<h1>Expenses</h1>
+<%= link_to 'New Expense', new_expense_path %>
 
-<ul id = "expenses">
-   <% @expenses.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
-   <% end %>
-</ul>
-
-<% end %>
-<p><%= link_to "Add new Expense", {:action => 'new' }%></p>
+<table>
+  <tr>
+    <th>Expense Name</th>
+    <th>Target</th>
+    <th>Amount</th>
+  </tr>
+ 
+  <% @expenses.each do |expense| %>
+    <tr>
+      <td><%= expense.names %></td>
+      <td><%= number_to_currency(expense.target) %></td>
+      <td><%= number_to_currency(expense.amount) %></td>
+      <td><%= link_to 'Show', expense_path(expense) %></td>
+      <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
+      <td><%= link_to 'Destroy',
+                                expense_path(expense),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
