@@ -1,13 +1,22 @@
-<% if @income.blank? %>
-<p>No Income Input</p>
-<% else %>
-<p>Current Incomes</p>
+<h1>Incomes</h1>
+<%= link_to 'New Income', new_income_path %>
 
-<ul id = "incomes">
-   <% @incomes.each do |c| %>
-   <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
-   <% end %>
-</ul>
-
-<% end %>
-<p><%= link_to "Add New Income", {:action => 'new' }%></p>
+<table>
+  <tr>
+    <th>Income Name</th>
+    <th>Amount</th>
+  </tr>
+ 
+  <% @incomes.each do |income| %>
+    <tr>
+      <td><%= income.names %></td>
+      <td><%= number_to_currency(income.amount) %></td>
+      <td><%= link_to 'Show', income_path(income) %></td>
+      <td><%= link_to 'Edit', edit_income_path(income) %></td>
+      <td><%= link_to 'Destroy',
+                                income_path(income),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

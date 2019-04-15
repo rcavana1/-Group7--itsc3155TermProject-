@@ -47,9 +47,10 @@ class BudgetsController < ApplicationController
     
     def destroy
         @budget = Budget.find(params[:id])
+        @account = Account.find(@budget.account_id)
         @budget.destroy
         
-        # redirect_to budgets_path
+        redirect_to account_path(@account)
     end
     
 end

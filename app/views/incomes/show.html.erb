@@ -1,0 +1,11 @@
+<p>
+    Incomes For:
+    <%= @income.names %>
+</p>
+
+<p>
+    Current Total:
+    <%= number_to_currency(@income.amount) %>
+</p>
+
+<%= link_to 'All Incomes', income_path %>
