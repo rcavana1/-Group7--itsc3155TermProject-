@@ -19,7 +19,7 @@ class ExpensesController < ApplicationController
         @expense =  Expense.find(params[:id])
     end
     
-     def index
+    def index
         @expenses = Expense.all
     end
     

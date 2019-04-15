@@ -1,7 +1,7 @@
 class IncomesController < ApplicationController
-  def new 
+    def new 
         @income = Income.new
-  end
+    end
     
     def create
         @income = Income.new(income_params)
@@ -9,9 +9,9 @@ class IncomesController < ApplicationController
         
         if @income.save
     
-            redirect_to :action => 'list'
+            redirect_to @income
         else
-            render :action => 'new'
+            render 'new'
         end
     end
     
@@ -19,39 +19,42 @@ class IncomesController < ApplicationController
         @income =  Income.find(params[:id])
     end
     
+    def index
+        @incomes = Income.all
+    end
+    
     def update
         @income = Income.find(params[:id])
         
         if @income.update_attributes(income_param)
-            redirect_to :action => 'show', :id => @income
+            redirect_to @income
         else
-        render :action => 'edit'
+            render 'edit'
         end
     end
     
     def destroy
-        Income.find(params[:id]).destroy
-        redirect_to :action => 'list'
+        @income = Income.find(params[:id])
+        @income.destroy
+        
+        redirect_to income_path
     end
     
     def show
         @income = Income.find(params[:id])
     end
     
-    def list
-        @income = Income.all
-    end
-    
     def show_reocurring
-        @reocurring = Income.find(params[:id])
+        @reocurring = Incpme.find(params[:id])
     end
     
     def show_stable
         @stable = Income.find(params[:id])
     end
     
-    private
+  
+end
+  private
     def income_params
         params.require(:income).permit(:names, :target, :amount, :reocurring, :stable)
     end
-end

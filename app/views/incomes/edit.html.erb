@@ -1,5 +1,5 @@
-<h1>New Income</h1>
-<%= form_for :income, url: incomes_path do |f| %>
+<h1>Edit Income</h1>
+<%= form_for :income, url: budget_path(@income), method: :patch do |f| %>
  
   <% if @income.errors.any? %>
     <div id="error_explanation">
@@ -15,11 +15,13 @@
     </div>
   <% end %>
  
+
+ 
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :names %>
   </p>
-  
+ 
   <p>
     <%= f.label :amount %><br>
     <%= f.number_field :amount %>
@@ -33,9 +35,10 @@
     <%= f.label :stable %><br>
     <%= f.text_field :stable %>
   </p>
-  
+ 
   <p>
     <%= f.submit %>
   </p>
 <% end %>
 
+<%= link_to 'Income', income_path %>
