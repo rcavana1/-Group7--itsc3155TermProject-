@@ -22,6 +22,7 @@ class BudgetsController < ApplicationController
     
     def show
         @budget = Budget.find(params[:id])
+        @account = Account.find(@budget.account_id)
         
         # commented out pending relevant models and
         # @incomes = Income.all
@@ -34,6 +35,7 @@ class BudgetsController < ApplicationController
     
     def edit
         @budget = Budget.find(params[:id])
+        @account = Account.find(@budget.account_id)
     end
 
     def update
