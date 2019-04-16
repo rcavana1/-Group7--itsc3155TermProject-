@@ -28,9 +28,9 @@ class BudgetsController < ApplicationController
         # @expenses = Expenses.all
     end
 
-    def index
-        @budgets = Budget.all
-    end
+    # def index
+    #     @budgets = Budget.all
+    # end
     
     def edit
         @budget = Budget.find(params[:id])
@@ -38,8 +38,9 @@ class BudgetsController < ApplicationController
 
     def update
         @budget = Budget.find(params[:id])
+        @account = Account.find(@budget.account_id)
         if @budget.update(budget_params)
-            redirect_to @budget
+            redirect_to account_path(@account)
         else
             render 'edit'
         end
