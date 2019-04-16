@@ -24,8 +24,6 @@ Rails.application.routes.draw do
   post 'incomes/update'
   get 'incomes/destroy'
   get 'incomes/show'
-  get 'incomes/show_reocurring'
-  get 'incomes/show_stable'
   
   # resources :accounts
   resources :accounts do

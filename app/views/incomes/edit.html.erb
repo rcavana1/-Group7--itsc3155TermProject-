@@ -1,5 +1,5 @@
 <h1>Edit Income</h1>
-<%= form_for :income, url: budget_path(@income), method: :patch do |f| %>
+<%= form_for :income, url: income_path(@income), method: :patch do |f| %>
  
   <% if @income.errors.any? %>
     <div id="error_explanation">
@@ -29,11 +29,11 @@
   
   <p>
     <%= f.label :reocurring %><br>
-    <%= f.text_field :reocurring %>
+    <%= f.check_box :reocurring %>
   </p>
     <p>
     <%= f.label :stable %><br>
-    <%= f.text_field :stable %>
+    <%= f.check_box :stable %>
   </p>
  
   <p>
@@ -41,4 +41,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Income', income_path %>
+<%= link_to 'Income', income_path(@income) %>

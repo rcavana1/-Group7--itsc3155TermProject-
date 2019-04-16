@@ -26,7 +26,7 @@ class IncomesController < ApplicationController
     def update
         @income = Income.find(params[:id])
         
-        if @income.update_attributes(income_param)
+        if @income.update(income_params)
             redirect_to @income
         else
             render 'edit'
@@ -37,19 +37,11 @@ class IncomesController < ApplicationController
         @income = Income.find(params[:id])
         @income.destroy
         
-        redirect_to income_path
+        redirect_to incomes_path
     end
     
     def show
         @income = Income.find(params[:id])
-    end
-    
-    def show_reocurring
-        @reocurring = Incpme.find(params[:id])
-    end
-    
-    def show_stable
-        @stable = Income.find(params[:id])
     end
     
   
