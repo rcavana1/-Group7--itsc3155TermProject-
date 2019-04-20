@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
     def new
+        @budget = Budget.find(params[:budget_id])
         @expense = @budget.expenses.new
     end
     
