@@ -28,8 +28,9 @@ Rails.application.routes.draw do
   resources :accounts
   resources :budgets do
     resources :expenses
+    resources :incomes
   end
-  resources :incomes
+  
   
   root 'welcome#index'
 end

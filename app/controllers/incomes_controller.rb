@@ -9,7 +9,7 @@ class IncomesController < ApplicationController
         
         if @income.save
     
-            redirect_to @income
+            redirect_to incomes_path
         else
             render 'new'
         end
