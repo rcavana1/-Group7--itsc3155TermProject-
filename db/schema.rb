@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_164232) do
+ActiveRecord::Schema.define(version: 2019_04_10_042845) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "username"
@@ -26,12 +26,10 @@ ActiveRecord::Schema.define(version: 2019_04_11_164232) do
     t.float "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "account_id"
-    t.index ["account_id"], name: "index_budgets_on_account_id"
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.string "name"
+    t.string "names"
     t.float "target"
     t.float "amount"
     t.boolean "reocurring"
@@ -41,13 +39,13 @@ ActiveRecord::Schema.define(version: 2019_04_11_164232) do
   end
 
   create_table "incomes", force: :cascade do |t|
+    t.string "names"
+    t.float "target"
+    t.float "amount"
+    t.boolean "reocurring"
+    t.boolean "stable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "names"
-    t.float "amount"
-    t.boolean "stable"
-    t.boolean "reocurring"
-    t.float "target"
   end
 
 end

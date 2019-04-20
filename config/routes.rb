@@ -25,13 +25,7 @@ Rails.application.routes.draw do
   get 'incomes/destroy'
   get 'incomes/show'
   
-  # resources :accounts
-  resources :accounts do
-    resources :budgets
-  end
-  #     resources :incomes
-  #     resources :expenses
-  # end
+  resources :accounts
   resources :budgets
   resources :expenses
   resources :incomes

@@ -8,7 +8,11 @@ class BudgetsController < ApplicationController
     def create
         @budget = Budget.create(budget_params)
         @budget.total=0.0
-        @budget.save
+        if @budget.save
+            redirect_to budgets_path
+        else
+            render 'new'
+        end
     end
     
     def show
@@ -27,7 +31,7 @@ class BudgetsController < ApplicationController
         @budget = Budget.find(params[:id])
         
         if @budget.update(budget_params)
-            redirect_to budget_path
+            redirect_to budgets_path
         else
             render 'edit'
         end
