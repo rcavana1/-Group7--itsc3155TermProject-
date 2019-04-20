@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   get 'incomes/show'
   
   resources :accounts
-  resources :budgets
-  resources :expenses
+  resources :budgets do
+    resources :expenses
+  end
   resources :incomes
   
   root 'welcome#index'
