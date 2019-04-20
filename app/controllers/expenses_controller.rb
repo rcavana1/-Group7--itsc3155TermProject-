@@ -1,22 +1,23 @@
 class ExpensesController < ApplicationController
-    def new 
-        @expense = Expense.new
+    def new
+        @expense = @budget.expenses.new
     end
     
     def create
-        @expense = Expense.new(expense_params)
-        
-        
-        if @expense.save
-    
-            redirect_to @expense
-        else
-            render 'new'
-        end
+        @budget = Budget.find(params[:budget_id])
+        @expense = @budget.expenses.create(expense_params)
+        redirect_to budget_path(@budget)
+        # @expense = Expense.new(expense_params)
+        # if @expense.save
+        #     redirect_to @expense
+        # else
+        #     render 'new'
+        # end
     end
     
     def edit
-        @expense =  Expense.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @expense = Expense.find(params[:budget_id])
     end
     
     def index
@@ -24,24 +25,26 @@ class ExpensesController < ApplicationController
     end
     
     def update
-        @expense = Expense.find(params[:id])
-        
+        @budget = Budget.find(params[:id])
+        @expense = Expense.find(params[:budget_id])
         if @expense.update(expense_params)
-            redirect_to @expense
+            redirect_to @budget
         else
             render 'edit'
         end
     end
     
     def destroy
-        @expense = Expense.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @expense = Expense.find(params[:budget_id])
         @expense.destroy
         
-        redirect_to expenses_path
+        redirect_to budget_path(@budget)
     end
     
     def show
-        @expense = Expense.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @expense = Expense.find(params[:budget_id])
     end
     
     

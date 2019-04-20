@@ -3,49 +3,58 @@
     <%= @budget.month.strftime('%B %Y') %>
 </p>
 
-<!--commented out pending relevant models and controllers-->
-<%
-=begin
-%>
-<h1>Income:</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Amount</th>
-  </tr>
- 
-  <% @incomes.each do |income| %>
-    <tr>
-      <td><%= income.name %></td>
-      <td><%= number_to_currency(income.amount) %></td>
-      <td><%= link_to 'Show', income_path(income) %></td>
-    </tr>
-  <% end %>
-</table>
+<h2>Expenses</h2>
 
-<h1>Expenses</h1>
- 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Spending Target</th>
-    <th>Spent</th>
+    <th>Expense Name</th>
+    <th>Target</th>
+    <th>Amount</th>
   </tr>
  
   <% @expenses.each do |expense| %>
     <tr>
-      <td><%= expense.name %></td>
+      <td><%= expense.names %></td>
       <td><%= number_to_currency(expense.target) %></td>
       <td><%= number_to_currency(expense.amount) %></td>
-      <td><%= link_to 'Show', expense_path(expense) %></td>
+      <td><%= link_to 'Show', budget_expense_path(expense) %></td>
+      <td><%= link_to 'Edit', edit_budget_expense_path(expense) %></td>
+      <td><%= link_to 'Destroy',
+                                budget_expense_path(expense),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
 
-<%
-=end
-%>
+<%= form_for([@budget, @budget.expenses.build]) do |f| %>
+<p>
+    <%= f.label :name %><br>
+    <%= f.text_field :names %>
+  </p>
+ 
+  <p>
+    <%= f.label :target %><br>
+    <%= f.number_field :target %>
+  </p>
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </p>
+  
+  <p>
+    <%= f.label :reocurring %>
+    <%= f.check_box :reocurring %>
+  </p>
+    <p>
+    <%= f.label :stable %>
+    <%= f.check_box :stable %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <p>
     Savings Target:
