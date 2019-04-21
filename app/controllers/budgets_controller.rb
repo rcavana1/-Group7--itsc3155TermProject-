@@ -53,3 +53,7 @@ private
         params.require(:budget).permit(:month, :target, :total)
     end
     
+    def tally_budget
+        @budget.total = 0.0 + @budget.incomes.sum('amount') - @budget.expenses.sum('amount')
+        @budget.save
+    end

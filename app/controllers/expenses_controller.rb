@@ -7,6 +7,7 @@ class ExpensesController < ApplicationController
     def create
         @budget = Budget.find(params[:budget_id])
         @expense = @budget.expenses.create(expense_params)
+        tally_budget
         redirect_to budget_path(@budget)
         # @expense = Expense.new(expense_params)
         # if @expense.save
@@ -29,6 +30,7 @@ class ExpensesController < ApplicationController
         @budget = Budget.find(params[:id])
         @expense = Expense.find(params[:budget_id])
         if @expense.update(expense_params)
+            tally_budget
             redirect_to @budget
         else
             render 'edit'
@@ -39,7 +41,7 @@ class ExpensesController < ApplicationController
         @budget = Budget.find(params[:id])
         @expense = Expense.find(params[:budget_id])
         @expense.destroy
-        
+        tally_budget
         redirect_to budget_path(@budget)
     end
     
@@ -54,4 +56,9 @@ end
   private
     def expense_params
         params.require(:expense).permit(:names, :target, :amount, :reocurring, :stable)
+    end
+    
+    def tally_budget
+        @budget.total = 0.0 + @budget.incomes.sum('amount') - @budget.expenses.sum('amount')
+        @budget.save
     end
