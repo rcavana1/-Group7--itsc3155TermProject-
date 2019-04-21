@@ -18,6 +18,7 @@ class BudgetsController < ApplicationController
     def show
         @budget = Budget.find(params[:id])
         @expenses = @budget.expenses
+        @incomes = @budget.incomes
     end
 
     def index

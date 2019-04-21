@@ -21,9 +21,9 @@ class ExpensesController < ApplicationController
         @expense = Expense.find(params[:budget_id])
     end
     
-    def index
-        @expenses = Expense.all
-    end
+    # def index
+    #     @expenses = Expense.all
+    # end
     
     def update
         @budget = Budget.find(params[:id])

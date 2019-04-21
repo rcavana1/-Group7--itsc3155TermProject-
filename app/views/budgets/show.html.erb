@@ -3,6 +3,32 @@
     <%= @budget.month.strftime('%B %Y') %>
 </p>
 
+<h2>Incomes</h2>
+
+<table>
+  <tr>
+    <th>Income Name</th>
+    <th>      </th>
+    <th>Amount</th>
+  </tr>
+ 
+  <% @incomes.each do |income| %>
+    <tr>
+      <td><%= income.names %></td>
+      <td>      </td>
+      <td><%= number_to_currency(income.amount) %></td>
+      <td><%= link_to 'Show', budget_income_path(income) %></td>
+      <td><%= link_to 'Edit', edit_budget_income_path(income) %></td>
+      <td><%= link_to 'Destroy',
+                                budget_income_path(income),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add an income', new_budget_income_path(@budget) %>
+
 <h2>Expenses</h2>
 
 <table>

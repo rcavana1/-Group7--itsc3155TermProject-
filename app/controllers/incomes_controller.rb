@@ -1,47 +1,51 @@
 class IncomesController < ApplicationController
     def new 
-        @income = Income.new
+        @budget = Budget.find(params[:budget_id])
+        @income = @budget.incomes.new
     end
     
     def create
-        @income = Income.new(income_params)
-        
-        
-        if @income.save
-    
-            redirect_to incomes_path
-        else
-            render 'new'
-        end
+        @budget = Budget.find(params[:budget_id])
+        @income = @budget.incomes.create(income_params)
+        redirect_to budget_path(@budget)
+        # @income = Income.new(income_params)
+        # if @income.save
+        #     redirect_to @income
+        # else
+        #     render 'new'
+        # end
     end
     
     def edit
-        @income =  Income.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @income = Income.find(params[:budget_id])
     end
     
-    def index
-        @incomes = Income.all
-    end
+    # def index
+    #     @incomes = Income.all
+    # end
     
     def update
-        @income = Income.find(params[:id])
-        
+        @budget = Budget.find(params[:id])
+        @income = Income.find(params[:budget_id])
         if @income.update(income_params)
-            redirect_to @income
+            redirect_to @budget
         else
             render 'edit'
         end
     end
     
     def destroy
-        @income = Income.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @income = Income.find(params[:budget_id])
         @income.destroy
         
-        redirect_to incomes_path
+        redirect_to budget_path(@budget)
     end
     
     def show
-        @income = Income.find(params[:id])
+        @budget = Budget.find(params[:id])
+        @income = Income.find(params[:budget_id])
     end
     
   

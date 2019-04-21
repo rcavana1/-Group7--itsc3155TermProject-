@@ -1,14 +1,11 @@
 
 <p>
-    Total Income For:
+    Income name:
     <%= @income.names %>
 </p>
 
-<!--commented out pending relevant models and controllers-->
-
-
 <p>
-    Current Income:
+    Income Amount:
     <%= number_to_currency(@income.amount) %> <br>
     Is this expense reocurring?
     <%= @income.reocurring %> <br>
@@ -16,4 +13,4 @@
     <%= @income.stable %> <br>
 </p>
 
-<%= link_to 'All Incomes', incomes_path %>
+<%= link_to 'Back to Budget view', budget_path(@budget) %>

@@ -1,5 +1,5 @@
 <h1>New Income</h1>
-<%= form_for :income, url: incomes_path do |f| %>
+<%= form_for :income, url: budget_incomes_path do |f| %>
  
   <% if @income.errors.any? %>
     <div id="error_explanation">
@@ -39,3 +39,4 @@
   </p>
 <% end %>
 
+<%= link_to 'Back to Budget view', budget_path(@budget) %>
