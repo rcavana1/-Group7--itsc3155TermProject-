@@ -6,12 +6,53 @@ class BudgetsController < ApplicationController
     end
     
     def create
-        @budget = Budget.create(budget_params)
-        @budget.total=0.0
-        if @budget.save
-            redirect_to budgets_path
-        else
-            render 'new'
+        if Budget.any?
+            @lastBudget = Budget.last
+            @lastExpenses = @lastBudget.expenses
+            @lastIncomes = @lastBudget.incomes
+            @budget = Budget.create(budget_params)
+            @budget.total=0.0
+            if @budget.save
+                @lastIncomes.each do |income|
+                    if income.reocurring
+                        @income = @budget.incomes.new
+                        @income.names = income.names
+                        @income.reocurring = income.reocurring
+                        @income.stable = income.stable
+                        @income.amount = 0.0
+                        if income.stable
+                            @income.amount = income.amount
+                        end
+                        @income.save
+                    end
+                end
+                @lastExpenses.each do |expense|
+                    if expense.reocurring
+                        @expense = @budget.expenses.new
+                        @expense.names = expense.names
+                        @expense.target = expense.target
+                        @expense.reocurring = expense.reocurring
+                        @expense.stable = expense.stable
+                        @expense.amount = 0.0
+                        if expense.stable
+                            @expense.amount = expense.amount
+                        end
+                        @expense.save
+                    end
+                end
+                tally_budget
+                redirect_to budgets_path
+            else
+                render 'new'
+            end
+        else    
+            @budget = Budget.create(budget_params)
+            @budget.total=0.0
+            if @budget.save
+                redirect_to budgets_path
+            else
+                render 'new'
+            end
         end
     end
     
