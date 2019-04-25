@@ -7,14 +7,13 @@ class IncomesController < ApplicationController
     def create
         @budget = Budget.find(params[:budget_id])
         @income = @budget.incomes.create(income_params)
-        tally_budget
-        redirect_to budget_path(@budget)
-        # @income = Income.new(income_params)
-        # if @income.save
-        #     redirect_to @income
-        # else
-        #     render 'new'
-        # end
+        
+        if @income.save
+            tally_budget
+            redirect_to budget_path(@budget)
+        else
+            render 'new'
+        end
     end
     
     def edit

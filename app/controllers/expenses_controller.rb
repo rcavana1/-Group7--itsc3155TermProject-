@@ -7,14 +7,14 @@ class ExpensesController < ApplicationController
     def create
         @budget = Budget.find(params[:budget_id])
         @expense = @budget.expenses.create(expense_params)
-        tally_budget
-        redirect_to budget_path(@budget)
-        # @expense = Expense.new(expense_params)
-        # if @expense.save
-        #     redirect_to @expense
-        # else
-        #     render 'new'
-        # end
+        
+        
+        if @expense.save
+            tally_budget
+            redirect_to budget_path(@budget)
+        else
+            render 'new'
+        end
     end
     
     def edit
