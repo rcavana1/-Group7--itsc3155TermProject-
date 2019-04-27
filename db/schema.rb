@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_235041) do
+ActiveRecord::Schema.define(version: 2019_04_27_191437) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "username"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_04_20_235041) do
     t.float "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_budgets_on_account_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -50,6 +52,14 @@ ActiveRecord::Schema.define(version: 2019_04_20_235041) do
     t.datetime "updated_at", null: false
     t.integer "budget_id"
     t.index ["budget_id"], name: "index_incomes_on_budget_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
