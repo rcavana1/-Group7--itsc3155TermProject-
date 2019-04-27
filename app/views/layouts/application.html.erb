@@ -30,8 +30,18 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
+<<<<<<< HEAD
           <li class="active"><li><%= link_to 'budgetDYNAMITE!', controller: 'welcome' %></li></li>
           <li><%= link_to 'Sign In', controller: 'accounts' %></li>
+=======
+          <li class="active"><li><%= link_to 'Home', controller: 'welcome' %></li></li>
+          <% if current_user %>
+            <li>Signed in as <strong><%= current_user.name %></strong></li>
+            <li><%= link_to "Log Out", signout_path, id: "sign_out" %></li>
+          <% else %>
+            <li><%= link_to "Log In", "/auth/google_oauth2", id: "sign_in" %></li>
+          <% end %>
+>>>>>>> 535155c1508846cdcfe0aa9ed0d348556687a745
           <li><%= link_to 'My Budgets', controller: 'budgets' %></li>
         </ul>
       </div>
