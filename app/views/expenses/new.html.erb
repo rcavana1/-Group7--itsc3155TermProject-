@@ -22,11 +22,11 @@
  
   <p>
     <%= f.label :target %><br>
-    <%= f.number_field :target %>
+    <%= f.number_field :target, :step=> 0.01 %>
   </p>
   <p>
     <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, :step=> 0.01 %>
   </p>
   
   <p>
