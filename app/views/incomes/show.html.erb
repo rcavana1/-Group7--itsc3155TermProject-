@@ -6,11 +6,23 @@
 
 <p>
     Income Amount:
-    <%= number_to_currency(@income.amount) %> <br>
-    Is This Income Reoccurring?
-    <%= @income.reocurring %> <br>
-    Is This A Stable Income?
-    <%= @income.stable %> <br>
+    <%= number_to_currency(@income.amount) %>
+</p>
+<p>
+    Does this income occur every month?
+    <% if @income.reocurring %>
+    Yes
+    <% else %>
+    No
+    <% end %>
+  </p>
+<p>
+    Is it the same amount every month?
+    <% if @income.stable %>
+    Yes
+    <% else %>
+    No
+    <% end %>
 </p>
 
 <%= link_to 'Back to Budget view', budget_path(@budget) %>

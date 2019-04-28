@@ -14,29 +14,27 @@
       </ul>
     </div>
   <% end %>
- 
-
- 
+  
   <p>
-    <%= f.label :name %><br>
+    <%= f.label "Expense name" %><br>
     <%= f.text_field :names %>
   </p>
  
   <p>
-    <%= f.label :target %><br>
+    <%= f.label "I do not want to spend more than:" %><br>
     <%= f.number_field :target, :step=> 0.01 %>
   </p>
   <p>
-    <%= f.label :amount %><br>
+    <%= f.label "How much have you spent so far?" %><br>
     <%= f.number_field :amount, :step=> 0.01 %>
   </p>
   
   <p>
-    <%= f.label :reocurring %>
+    <%= f.label "Does this expense occur every month?" %>
     <%= f.check_box :reocurring %>
   </p>
     <p>
-    <%= f.label :stable %>
+    <%= f.label "Is it the same amount every month?" %>
     <%= f.check_box :stable %>
   </p>
  

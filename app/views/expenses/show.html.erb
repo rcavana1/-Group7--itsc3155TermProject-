@@ -5,14 +5,28 @@
 </p>
 
 <p>
-    Anticipated Spending:
-    <%= number_to_currency(@expense.target) %> <br>
+    Spending Goal:
+    <%= number_to_currency(@expense.target) %>
+</p>
+<p>
     Actual Spending:
-    <%= number_to_currency(@expense.amount) %> <br>
-    Is this expense reocurring?
-    <%= @expense.reocurring %> <br>
-    Is this a stable expense?
-    <%= @expense.stable %> <br>
+    <%= number_to_currency(@expense.amount) %>
+    </p>
+<p>
+    Does this expense occur every month?
+    <% if @expense.reocurring %>
+    Yes
+    <% else %>
+    No
+    <% end %>
+    </p>
+<p>
+    Is it the same amount every month?
+    <% if @expense.stable %>
+    Yes
+    <% else %>
+    No
+    <% end %>
 </p>
 
 <%= link_to 'Back to Budget view', budget_path(@budget) %>

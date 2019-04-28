@@ -33,9 +33,9 @@
 <table class>
   <tr>
     <th>Expense Name</th>
-    <th>Target</th>
-    <th>Amount</th>
-    <th colspan="3">Functionality</th>
+    <th>Spending Target</th>
+    <th>Spent</th>
+    <th colspan="3">Actions</th>
   </tr>
  
   <% @expenses.each do |expense| %>
@@ -58,6 +58,9 @@
 <p>
     Savings Target:
     <%= number_to_currency(@budget.target) %>
+
+</p>
+<p>
     Current Total:
     <%= number_to_currency(@budget.total) %>
 </p>

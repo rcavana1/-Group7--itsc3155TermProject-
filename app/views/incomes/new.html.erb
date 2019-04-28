@@ -16,21 +16,21 @@
   <% end %>
  
   <p>
-    <%= f.label :name %><br>
+    <%= f.label "Income name" %><br>
     <%= f.text_field :names %>
   </p>
   
   <p>
-    <%= f.label :amount %><br>
+    <%= f.label "Income amount" %><br>
     <%= f.number_field :amount, :step=> 0.01 %>
   </p>
   
   <p>
-    <%= f.label :reocurring %><br>
+    <%= f.label "Select if this income occurs every month" %>
     <%= f.check_box :reocurring %>
   </p>
     <p>
-    <%= f.label :stable %><br>
+    <%= f.label "Select if it is the same every month" %>
     <%= f.check_box :stable %>
   </p>
   
