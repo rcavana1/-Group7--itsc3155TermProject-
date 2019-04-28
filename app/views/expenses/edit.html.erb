@@ -1,5 +1,5 @@
 <h1>Edit Expense</h1>
-<%= form_for :expense, url: budget_expense_path(@expense), method: :patch do |f| %>
+<%= form_for :expense, url: expense_path(@expense), method: :patch do |f| %>
  
   <% if @expense.errors.any? %>
     <div id="error_explanation">

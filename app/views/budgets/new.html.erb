@@ -1,5 +1,5 @@
 <h1>New Budget</h1>
-<%= form_for :budget, url: budgets_path do |f| %>
+<%= form_for :budget, url: user_budgets_path do |f| %>
  
   <% if @budget.errors.any? %>
     <div id="error_explanation">
@@ -30,4 +30,4 @@
   </p>
 <% end %>
 
-<%= link_to 'All Budgets', budgets_path %>
+<%= link_to 'My Budgets', user_budgets_path %>

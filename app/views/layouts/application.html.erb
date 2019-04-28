@@ -34,10 +34,10 @@
           <% if current_user %>
             <li> <strong>Signed in as <%= current_user.name %></strong></li>
             <li><%= link_to "Log Out", signout_path, id: "sign_out" %></li>
+            <li><%= link_to 'My Budgets', user_budgets_path(current_user) %></li>
           <% else %>
             <li><%= link_to "Log In", "/auth/google_oauth2", id: "sign_in" %></li>
           <% end %>
-          <li><%= link_to 'My Budgets', controller: 'budgets' %></li>
         </ul>
       </div>
     </div>

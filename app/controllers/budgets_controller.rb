@@ -2,15 +2,17 @@ class BudgetsController < ApplicationController
 # you are on slide 8
 
     def new
-        @budget = Budget.new
+        @user = current_user
+        @budget = @user.budgets.new
     end
     
     def create
-        if Budget.any?
-            @lastBudget = Budget.last
+        @user = current_user
+        if @user.budgets.any?
+            @lastBudget = @user.budgets.last
             @lastExpenses = @lastBudget.expenses
             @lastIncomes = @lastBudget.incomes
-            @budget = Budget.create(budget_params)
+            @budget = @user.budgets.create(budget_params)
             @budget.total=0.0
             if @budget.save
                 @lastIncomes.each do |income|
@@ -41,15 +43,15 @@ class BudgetsController < ApplicationController
                     end
                 end
                 tally_budget
-                redirect_to budgets_path
+                redirect_to user_budgets_path(@user)
             else
                 render 'new'
             end
         else    
-            @budget = Budget.create(budget_params)
+            @budget = @user.budgets.create(budget_params)
             @budget.total=0.0
             if @budget.save
-                redirect_to budgets_path
+                redirect_to user_budgets_path
             else
                 render 'new'
             end
@@ -57,34 +59,40 @@ class BudgetsController < ApplicationController
     end
     
     def show
+        @user = current_user
         @budget = Budget.find(params[:id])
         @expenses = @budget.expenses
         @incomes = @budget.incomes
     end
 
     def index
-        @budgets = Budget.all
+        @user = current_user
+        @budgets = @user.budgets
+        # @budgets = Budget.all
     end
     
     def edit
+        @user = current_user
         @budget = Budget.find(params[:id])
     end
 
     def update
+        @user = current_user
         @budget = Budget.find(params[:id])
         
         if @budget.update(budget_params)
-            redirect_to budgets_path
+            redirect_to user_budgets_path(@user)
         else
             render 'edit'
         end
     end
     
     def destroy
+        @user = current_user
         @budget = Budget.find(params[:id])
         @budget.destroy
         
-        redirect_to budgets_path
+        redirect_to user_budgets_path(@user)
     end
     
 end
