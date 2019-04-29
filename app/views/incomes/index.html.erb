@@ -13,8 +13,8 @@
     <tr>
       <td><%= income.names %></td>
       <td><%= number_to_currency(income.amount) %></td>
-      <td><%= income.reocurring %></td>
-      <td><%= income.stable %></td>
+      <td><%= human_boolean(income.reocurring) %></td>
+      <td><%= human_boolean(income.stable) %></td>
       <td><%= link_to 'Show', income_path(income) %></td>
       <td><%= link_to 'Edit', edit_income_path(income) %></td>
       <td><%= link_to 'Destroy',
